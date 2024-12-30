@@ -4,7 +4,7 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-st.title('Electricity Usage Prediction')
+st.title('⚡Electricity Usage Prediction')
 st.info('The linear regression model in this web app is primarily built and evaluated using numpy, pandas, and seaborn libraries.')
 
 
@@ -29,33 +29,49 @@ numerical_f = numerical.copy()
 numerical_f.remove('usage_kwh')
 features = categorical + numerical_f
 
-with st.expander('Dataframe'):
+with st.expander('Dataset'):
     st.write('**Description**')
     st.markdown('\
                 This app utilizes the \
                 [Steel Industry Energy Consumption](https://archive.ics.uci.edu/dataset/851/steel+industry+energy+consumption) \
                 dataset from UCI machine learning repository website.')
-    st.dataframe(df)
-
-    st.markdown("""
-                Target (dependent variable): usage_kwh
-
-                Features (independent variables):
+    st.markdown(
+            """
+                **Target (dependent variable): usage_kwh** \n
+                **Features (independent variables):**
                 * lagging_current_reactive_power_kvarh
                 * leading_current_reactive_power_kvarh
                 * co2(tco2)
                 * lagging_current_power_factor
                 * leading_current_power_factor
-                * nsm (number of seconds from midnight
+                * nsm: number of seconds from midnight
                 * weekstatus
                 * day_of_week
                 * load_type
-            """)
+            """
+        )
+    st.dataframe(df)
 
-with st.expander('Data Visualization'):
-    st.write('**Correlation Heatmap of Numerical Features and Target**')
-    fig, ax = plt.subplots()
-    sns.heatmap(df[numerical].corr(), ax=ax, annot=True)
-    st.write(fig)
+sns.set(font_scale=0.8)
+
+with st.expander('Correlation heatmap of the numerical features and the target'):
+    fig1, ax1 = plt.subplots()
+    sns.heatmap(df[numerical].corr(), ax=ax1, annot=True)
+    st.write(fig1)
+
+
+with st.expander('Box plot of a categorical feature and the target'):
+    option = st.selectbox(
+        "Categorical Feature",
+        categorical,
+        index=None,
+        placeholder="select a feature.."
+    )
+    if option:
+        fig2, ax2 = plt.subplots()
+        sns.boxenplot(y=df['usage_kwh'], x=df[option], ax=ax2)
+        st.write(fig2)
+    pass
+
 
 
