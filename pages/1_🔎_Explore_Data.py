@@ -15,6 +15,7 @@ del df['Unnamed: 0']
 
 # Convert columns name to lowercase and replace period to underscore
 df.columns = df.columns.str.lower().str.replace(".", "_")
+del df['weekstatus']
 
 # Get categorical columns name
 categorical = list(df.dtypes[(df.dtypes == 'object')].index)
@@ -54,7 +55,6 @@ st.markdown(
             * leading_current_power_factor
             * nsm: number of seconds from midnight
             * weekstatus
-            * day_of_week
             * load_type
         """
     )

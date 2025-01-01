@@ -14,6 +14,7 @@ st.title("🔩Implementation")
 df = pd.read_csv('steel_industry_energy_consumption.csv')
 del df['Unnamed: 0']
 df.columns = df.columns.str.lower().str.replace(".", "_")
+del df['weekstatus']
 categorical = list(df.dtypes[(df.dtypes == 'object')].index)
 for col in categorical:
     df[col] = df[col].str.lower()
@@ -51,13 +52,13 @@ dicts_cat = {}
 for col in categorical:
     dicts_cat[col] = df[col].value_counts().sort_values().index.to_list()
 
-def prepare_X(data: pd.DataFrame) -> np.ndarray:
+def prepare_X(data):
     X = data.copy()
 
     if 'object' in X.dtypes.values:
         for k, v in dicts_cat.items():
             for value in v:
-                X[f'{k}={value}'] = (X[k] == value).astype(int)
+                X[f'{k}_{value}'] = (X[k] == value).astype(int)
             del X[k]
 
     return X.values
@@ -140,7 +141,7 @@ with st.expander('**Feature engineering**'):
         if 'object' in X.dtypes.values:
             for k, v in dicts_cat.items():
                 for value in v:
-                    X[f'{k}={value}'] = (X[k] == value).astype(int)
+                    X[f'{k}_{value}'] = (X[k] == value).astype(int)
                 del X[k]
         return X.values
     """, language='python'
@@ -384,8 +385,8 @@ with st.expander("**Train and evaluate the regularized model using train + valid
 
         fig4, ax4 = plt.subplots()
         sns.scatterplot(x=y_test, y=y_test_pred, ax=ax4)
-        plt.xlabel(f'y_val (actual)')
-        plt.ylabel('y_val_pred (predicted)')
+        plt.xlabel(f'y_test (actual)')
+        plt.ylabel('y_test_pred (predicted)')
         plt.title('Actual vs Predicted Values')
         plt.plot([min(y_test), max(y_test)], [min(y_test), max(y_test)], color='red', linestyle='--')
 
@@ -402,8 +403,8 @@ with st.expander("**Train and evaluate the regularized model using train + valid
 
     fig4, ax4 = plt.subplots()
     sns.scatterplot(x=y_test, y=y_test_pred, ax=ax4)
-    plt.xlabel(f'y_val (actual)')
-    plt.ylabel('y_val_pred (predicted)')
+    plt.xlabel(f'y_test (actual)')
+    plt.ylabel('y_test_pred (predicted)')
     plt.title('Actual vs Predicted Values')
     plt.plot([min(y_test), max(y_test)], [min(y_test), max(y_test)], color='red', linestyle='--')
 
