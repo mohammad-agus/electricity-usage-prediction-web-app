@@ -19,6 +19,14 @@ st.write('To simulate a machine learning model as a web app that predicts daily 
 st.write('This app utilizes the Steel Industry Energy Consumption dataset from UCI machine learning repository website.')
 st.link_button("Go to data source", "https://archive.ics.uci.edu/dataset/851/steel+industry+energy+consumption")
 
+st.write("")
+st.markdown('##### Contact Information')
+st.markdown(
+    """ 
+    - **Email** : mohammad_agus@outlook.com
+    - **LinkedIn** : [in/moh-agus](https://www.linkedin.com/in/moh-agus/)
+    """
+    )
 
 
 
