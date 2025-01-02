@@ -1,3 +1,0 @@
-# Specify language for specific files or directories
-*.py linguist-language=Python
-docs/* linguist-documentation=true
