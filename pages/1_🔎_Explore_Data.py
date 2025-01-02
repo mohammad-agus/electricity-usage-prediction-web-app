@@ -54,7 +54,7 @@ st.markdown(
             * lagging_current_power_factor
             * leading_current_power_factor
             * nsm: number of seconds from midnight
-            * weekstatus
+            * day_of_week
             * load_type
         """
     )

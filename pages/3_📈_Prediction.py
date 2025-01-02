@@ -74,14 +74,14 @@ with st.sidebar:
     )
 
     dayofweek = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
-    day_of_week = st.segmented_control(
+    day_of_week = st.pills(
         label="Day of week",
         options=dayofweek,
         selection_mode='single'
     )
     
     loadtypes = ['light_load', 'medium_load', 'maximum_load']
-    load_type = st.segmented_control(
+    load_type = st.pills(
         label="Load type",
         options=loadtypes,
         selection_mode='single'
@@ -110,5 +110,5 @@ else:
     x = pd.get_dummies(df_w_input, dtype=int)
     predictions = intercept + x.iloc[0:1].values @ coef
 
-    st.table(x.iloc[0:1])
+    st.table(df_w_input.iloc[0:1])
     st.metric(label='Electricity usage', value=f'{round(predictions[0],3)} kWh')
