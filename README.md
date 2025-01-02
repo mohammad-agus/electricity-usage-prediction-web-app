@@ -5,5 +5,9 @@ To simulate a machine learning model as a web app that predicts daily electricit
 The linear regression model in this web app was primarily implemented and evaluated using numpy, pandas, matlplotlib, and seaborn libraries.
 This app utilizes [the Steel Industry Energy Consumption dataset](https://archive.ics.uci.edu/dataset/851/steel+industry+energy+consumption) from UCI machine learning repository website.
 * [Go to streamlit web app](https://electricity-usage-prediction.streamlit.app/)
-* [The notebook of this project](https://github.com/mohammad-agus/electricity-usage-prediction-web-app/blob/main/steel_industry_energy_consumption.ipynb)
+* [The notebook of this project](https://github.com/mohammad-agus/electricity-usage-prediction-web-app/blob/main/notebook.py)
+
+> **Note:**
+> Use [marimo](https://github.com/marimo-team/marimo) to access the project's notebook.
+
 
