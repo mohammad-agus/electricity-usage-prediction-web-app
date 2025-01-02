@@ -1,5 +1,5 @@
 ### **Electricity Usage Prediction**
-
+![web_app_screenshot](https://github.com/user-attachments/assets/a25bfe09-e368-47fc-92e6-c6d77b2c688f)
 #### *Objective*
 To simulate a machine learning model as a web app that predicts daily electricity consumption using streamlit library.
 The linear regression model in this web app was primarily implemented and evaluated using numpy, pandas, matlplotlib, and seaborn libraries.
