@@ -27,6 +27,7 @@ st.markdown(
     """ 
     - **Email** : mohammad_agus@outlook.com
     - **LinkedIn** : [in/moh-agus](https://www.linkedin.com/in/moh-agus/)
+    - **Github** : [mohammad-agus](https://github.com/mohammad-agus)
     """
     )
 
